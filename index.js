@@ -21,5 +21,5 @@ app.get("/", (req, res) => {
     res.json({ok: true});
 });
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 8080;
 app.listen(port, () => console.log("Servidor escuchando en: ",port));
