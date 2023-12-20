@@ -18,7 +18,7 @@ app.use("/api/writteInfo",requiereToken,writteInfoRouter);
 
 // Ruta principal
 app.get("/", (req, res) => {
-    res.json({ok: true});
+    res.json({Message: "Coco, te amo <3"});
 });
 
 const port = process.env.PORT || 8080;
