@@ -10,7 +10,7 @@ export const fetchCapNom = async (req,res,next) => {
                 { nomCompleto: { $regex: name, $options: 'i' } },
               ]
         }).collation({"locale" : "en", "strength" : 1});
-        if (estadisticas.length<=0){
+        if (capacitado.length<=0){
           res.status(404).json({error: "No se encontraron capacitados"})
           return;
         }
@@ -29,7 +29,7 @@ export const fetchCapCurp = async (req,res,next) => {
                 { curp: { $regex: curp, $options: 'i' } },
               ]
         }).collation({"locale" : "en", "strength" : 1});
-        if (estadisticas.length<=0){
+        if (capacitado.length<=0){
           res.status(404).json({error: "No se encontraron capacitados"})
           return;
         }
