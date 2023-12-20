@@ -10,10 +10,14 @@ export const fetchCapNom = async (req,res,next) => {
                 { nomCompleto: { $regex: name, $options: 'i' } },
               ]
         }).collation({"locale" : "en", "strength" : 1});
+        if (estadisticas.length<=0){
+          res.status(404).json({error: "No se encontraron capacitados"})
+          return;
+        }
         res.status(200).send(capacitado);
       } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error en la búsqueda' });
+        res.status(500).json({ error: 'Error en la búsqueda' });
       }
 } 
 
@@ -25,10 +29,14 @@ export const fetchCapCurp = async (req,res,next) => {
                 { curp: { $regex: curp, $options: 'i' } },
               ]
         }).collation({"locale" : "en", "strength" : 1});
+        if (estadisticas.length<=0){
+          res.status(404).json({error: "No se encontraron capacitados"})
+          return;
+        }
         res.status(200).send(capacitado);
       } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error en la búsqueda' });
+        res.status(500).json({ error: 'Error en la búsqueda' });
       }
 }
 
@@ -38,7 +46,7 @@ export const fetchStatsIndv = async (req,res,next) => {
     const estadisticas = await Estadisticas.find({ capacitado: _id });
 
     if (estadisticas.length<=0){
-      res.status(404).json({message: "No se han encontrado estaditicas"})
+      res.status(404).json({error: "No se han encontrado estaditicas"})
       return;
     }
 
@@ -63,7 +71,7 @@ export const fetchStatsIndv = async (req,res,next) => {
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: error });
+    res.status(500).json({ error: error });
   }
 }
 
@@ -73,7 +81,7 @@ export const fetchStatsGlob = async (req,res,next) => {
     let estadisticas = await Estadisticas.find({ anio });
 
     if (estadisticas.length<=0){
-      res.status(404).json({message: "No se han encontrado estaditicas"})
+      res.status(404).json({error: "No se han encontrado estaditicas"})
       return;
     }
 
@@ -97,7 +105,7 @@ export const fetchStatsGlob = async (req,res,next) => {
     
   } catch(error){
     console.error(error);
-    res.status(500).json({message: error})
+    res.status(500).json({error: error})
   }
 }
 
