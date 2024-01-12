@@ -5,7 +5,7 @@ export const ponerEstadisticas = async (req,res,next) => {
     const {anio,mes,dia,espreguia,errores,canterr,stiempo,ctiempo,capacitado} =req.body;
     try {
 
-        const estadisticas = new Estadisticas({anio,mes,dia,espreguia,errores,canterr,stiempo,ctiempo,capacitado});
+        const estadisticas = new Estadisticas({anio,mes,dia,espreguia,wasCompleted,errores,canterr,stiempo,ctiempo,capacitado});
         await estadisticas.save();
       return res.status(201).json({ok:"Exito al crear"});
 
