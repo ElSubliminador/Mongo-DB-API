@@ -19,7 +19,7 @@ const estadisticasSchema = mongoose.Schema({
     },
     wasCompleted:{
         type: Boolean,
-        requerid: [true, "Se debe indicar si el ejercicio fue completado"]
+        required: [true, "Se debe indicar si el ejercicio fue completado"]
     },
     errores:{
         type: [String],
