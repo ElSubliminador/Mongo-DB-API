@@ -84,6 +84,7 @@ export const fetchStatsGlob = async (req,res,next) => {
       res.status(404).json({error: "No se han encontrado estaditicas"})
       return;
     }
+    console.log(estadisticas);
 
     const PreGuia = estadisticas.filter((item) => item.espreguia === true && item.wasCompleted === true);
     const PostGuia = estadisticas.filter((item) => item.espreguia === false && item.wasCompleted === true);
