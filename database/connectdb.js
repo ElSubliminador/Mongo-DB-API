@@ -6,3 +6,4 @@ try {
 } catch (err) {
     console.error("Error de conexión con MongoDB Atlas"+err);
 }
+
