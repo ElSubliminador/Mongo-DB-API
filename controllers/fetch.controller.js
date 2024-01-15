@@ -55,6 +55,7 @@ export const fetchStatsIndv = async (req,res,next) => {
      const PostGuia = estadisticas.filter((item) => item.espreguia === false && item.wasCompleted === true);
      const PreGuiaUC = estadisticas.filter((item) => item.espreguia === true && item.wasCompleted === false);
      const PostGuiaUC = estadisticas.filter((item) => item.espreguia === false && item.wasCompleted === false);
+     console.log(PreGuia);
      // Calcular promedios
      const promedios = {
        erroresPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"canterr"),
