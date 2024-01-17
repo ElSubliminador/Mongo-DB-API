@@ -49,12 +49,17 @@ export const fetchStatsIndv = async (req,res,next) => {
       res.status(404).json({error: "No se han encontrado estaditicas"})
       return;
     }
-     console.log(estadisticas);
+     //console.log(estadisticas);
      // Filtrar los datos según las condiciones necesarias
      const PreGuia = estadisticas.filter((item) => item.espreguia === true && item.wasCompleted === true);
      const PostGuia = estadisticas.filter((item) => item.espreguia === false && item.wasCompleted === true);
      const PreGuiaUC = estadisticas.filter((item) => item.espreguia === true && item.wasCompleted === false);
      const PostGuiaUC = estadisticas.filter((item) => item.espreguia === false && item.wasCompleted === false);
+     
+     console.log(PreGuia);
+     console.log(PreGuia);
+     console.log(PreGuiaUC);
+     console.log(PreGuiaUC);
      // Calcular promedios
      const promedios = {
        erroresPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"canterr"),
