@@ -57,15 +57,15 @@ export const fetchStatsIndv = async (req,res,next) => {
      const PostGuiaUC = estadisticas.filter((item) => item.espreguia === false && item.wasCompleted === false);
      
      console.log(PreGuia);
-     console.log(PreGuia);
      console.log(PreGuiaUC);
-     console.log(PreGuiaUC);
+     console.log(PostGuia);
+     console.log(PostGuiaUC);
      // Calcular promedios
      const promedios = {
        erroresPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"canterr"),
        erroresPost: calcularPromedio(PostGuia.concat(PostGuiaUC),"canterr"),
        tiemposPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"ctiempo"),
-       tiemposPost: calcularPromedio(PreGuia.concat(PreGuiaUC),"ctiempo"),
+       tiemposPost: calcularPromedio(PostGuia.concat(PostGuiaUC),"ctiempo"),
        cantPreguia_c: PreGuia.length,
        cantPostguia_c: PostGuia.length,
        cantPreguia_uc: PreGuiaUC.length,
