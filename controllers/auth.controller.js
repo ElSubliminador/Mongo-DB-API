@@ -30,7 +30,7 @@ export const registerSup = async (req, res, next) => {
         const supervisor = new Supervisor({usuario,nombre,apaterno,amaterno,password});
         await supervisor.save();
         
-        return res.status(200).json({ok:"Exito al crear"});
+        return res.status(201).json({ok:"Exito al crear"});
     }catch (err) {
         console.log(err);
         if(err.code === 11000){

@@ -55,11 +55,7 @@ export const fetchStatsIndv = async (req,res,next) => {
      const PostGuia = estadisticas.filter((item) => item.espreguia === false && item.wasCompleted === true);
      const PreGuiaUC = estadisticas.filter((item) => item.espreguia === true && item.wasCompleted === false);
      const PostGuiaUC = estadisticas.filter((item) => item.espreguia === false && item.wasCompleted === false);
-     
-     console.log(PreGuia);
-     console.log(PreGuiaUC);
-     console.log(PostGuia);
-     console.log(PostGuiaUC);
+
      // Calcular promedios
      const promedios = {
        erroresPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"canterr"),
@@ -101,8 +97,8 @@ export const fetchStatsGlob = async (req,res,next) => {
     const datos = {
       erroresPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"canterr"),
       erroresPost: calcularPromedio(PostGuia.concat(PostGuiaUC),"canterr"),
-      tiemposPre: calcularPromedio(PreGuia,"ctiempo"),
-      tiemposPost: calcularPromedio(PostGuia,"ctiempo"),
+      tiemposPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"ctiempo"),
+      tiemposPost: calcularPromedio(PostGuia.concat(PostGuiaUC),"ctiempo"),
       Ex_Pre: PreGuia.length,
       Fra_Pre: PreGuiaUC.length,
       Ex_Post: PostGuia.length,
