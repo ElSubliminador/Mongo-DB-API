@@ -22,7 +22,9 @@ export const fetchCapNom = async (req,res,next) => {
 } 
 
 export const fetchCapCurp = async (req,res,next) => {
-    const {curp} = req.params;
+    const {curp} = req.body;
+    typeof(curp);
+    console.log(curp);
     try {
         let capacitado = await Capacitado.find({
             $or: [

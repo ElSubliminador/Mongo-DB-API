@@ -4,7 +4,7 @@ import {fetchCapNom,fetchCapCurp,fetchStatsIndv,fetchStatsGlob} from "../control
 const router = Router();
 
 router.get("/nomCap/:name",fetchCapNom);
-router.get("/curpCap/:curp",fetchCapCurp);
+router.post("/curpCap/",fetchCapCurp);
 router.get("/estIndv/:_id",fetchStatsIndv);
 router.get("/estGlob/:anio",fetchStatsGlob);
 
