@@ -2,7 +2,7 @@ import {Estadisticas} from "../models/estadisticas.js"
 import {Capacitado} from "../models/capacitado.js"
 
 export const ponerEstadisticas = async (req,res,next) => {
-    const {anio,mes,dia,espreguia,errores,canterr,stiempo,ctiempo,capacitado} =req.body;
+    const {anio,mes,dia,espreguia,errores,wasCompleted,canterr,stiempo,ctiempo,capacitado} =req.body;
     try {
 
         const estadisticas = new Estadisticas({anio,mes,dia,espreguia,wasCompleted,errores,canterr,stiempo,ctiempo,capacitado});

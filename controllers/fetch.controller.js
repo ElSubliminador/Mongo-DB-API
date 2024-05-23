@@ -22,7 +22,9 @@ export const fetchCapNom = async (req,res,next) => {
 } 
 
 export const fetchCapCurp = async (req,res,next) => {
-    const {curp} = req.params;
+    const {curp} = req.body;
+    typeof(curp);
+    console.log(curp);
     try {
         let capacitado = await Capacitado.find({
             $or: [
@@ -49,7 +51,7 @@ export const fetchStatsIndv = async (req,res,next) => {
       res.status(404).json({error: "No se han encontrado estaditicas"})
       return;
     }
-
+     //console.log(estadisticas);
      // Filtrar los datos según las condiciones necesarias
      const PreGuia = estadisticas.filter((item) => item.espreguia === true && item.wasCompleted === true);
      const PostGuia = estadisticas.filter((item) => item.espreguia === false && item.wasCompleted === true);
@@ -60,8 +62,8 @@ export const fetchStatsIndv = async (req,res,next) => {
      const promedios = {
        erroresPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"canterr"),
        erroresPost: calcularPromedio(PostGuia.concat(PostGuiaUC),"canterr"),
-       tiemposPre: calcularPromedio(PreGuia,"ctiempo"),
-       tiemposPost: calcularPromedio(PostGuia,"ctiempo"),
+       tiemposPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"ctiempo"),
+       tiemposPost: calcularPromedio(PostGuia.concat(PostGuiaUC),"ctiempo"),
        cantPreguia_c: PreGuia.length,
        cantPostguia_c: PostGuia.length,
        cantPreguia_uc: PreGuiaUC.length,
@@ -97,8 +99,8 @@ export const fetchStatsGlob = async (req,res,next) => {
     const datos = {
       erroresPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"canterr"),
       erroresPost: calcularPromedio(PostGuia.concat(PostGuiaUC),"canterr"),
-      tiemposPre: calcularPromedio(PreGuia,"ctiempo"),
-      tiemposPost: calcularPromedio(PostGuia,"ctiempo"),
+      tiemposPre: calcularPromedio(PreGuia.concat(PreGuiaUC),"ctiempo"),
+      tiemposPost: calcularPromedio(PostGuia.concat(PostGuiaUC),"ctiempo"),
       Ex_Pre: PreGuia.length,
       Fra_Pre: PreGuiaUC.length,
       Ex_Post: PostGuia.length,
